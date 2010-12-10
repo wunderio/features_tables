@@ -1,0 +1,27 @@
+<?php
+// $Id$
+
+
+/**
+ * @file
+ * The main module files for features_tables.module
+ *
+ * The feature_tables.module makes schema-api-declarated database tables available as feature components
+ */
+
+
+/**
+ * Main info hook that to declare the 'databasetable' component to features
+ *
+ */
+function features_tables_features_api() {
+  return array(
+    'databasetables' => array(
+      'name' => 'Database tables',
+      'default_hook' => 'databasetables_defaults',
+      'default_file' => FEATURES_DEFAULTS_INCLUDED,
+      'features_source' => TRUE,
+      'file' => drupal_get_path('module', 'features_tables') .'/features_tables.databasetables.inc',
+    ),
+  );
+}
