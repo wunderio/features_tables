@@ -10,7 +10,7 @@ feature_tables 1.x for Drupal 6.x
 The features_tables module exposes database declared via the drupal schema api as components to features.
 This enables you to store and deploy _whole_ database _tables_ in code via features.
 This is meant to be used as a last means for modules, which story site buildling _configuration_ in dedicated tables but do not come with inherent features/exportables-support, to work with features.
-               
+
 
 Examples
 --------
@@ -28,7 +28,13 @@ Examples
 - {blocks} etc. 
 
 - any other tables that _only_ stores moderate amounts of _configuration_
-                                                                                                      
+
+
+Quirks
+------
+
+For some tables/modules it might not suffice to just store the raw table data, even in cases where that itself is clean. One example we came upon is storing the {language} settings in a feature via features_tables, which works nice - but oddly requires you to just save the languages-settings-dialog once the feature has been reverted/rebuilt. Meaning: You may encounter that additional steps are necessary (To prepare and react cleanly to feature_tables imports/exports you have a hook.based api at hand, see resp. section below).
+
 
 WARNING - DISCLAIMERS - KEEP IN MIND
 ------------------------------------
@@ -43,6 +49,8 @@ No questions, the best way to enable modules without inherent features support t
   (well, in that case you probably shouldn't use this module, either...)
 - you don't have the time (a pity, but happens in real world)
 - there is simply no good elegant way to achieve that - or no way at all
+
+As we think, it's a site should be living cleanly in code, there should be no blank spots on this map, and it should not cost you hours or days to fix shortcomings of other modules or architectures. This is why we created this module.
 
 So, while features_tables is not the pure and proper way to go, it may be helpful in some cases.
 
@@ -59,6 +67,8 @@ You should use features_tables only as a fast or last measure!
 You should use features_tables only if you know how features and the respective tables work!
 
 In any circumstances use this module on your own risk!
+
+Features_tables is in use on D6 development and production sites, but as the (rebellic) youth it is, you should use it with great care (if at all, as explained above)!
 
 
 Installation
