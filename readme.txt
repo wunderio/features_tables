@@ -7,15 +7,15 @@ current status: 2010-12-10
 feature_tables 1.x for Drupal 6.x
 -----------------------------------
 
-The features_tables module exposes database declared via the drupal schema api as components to features.
+The features_tables module exposes entire database tables declared via the drupal schema api as components to features.
 This enables you to store and deploy _whole_ database _tables_ in code via features.
-This is meant to be used as a last means for modules, which story site buildling _configuration_ in dedicated tables but do not come with inherent features/exportables-support, to work with features.
+This is meant to be used as a last means for modules, which store site buildling _configuration_ in dedicated tables but do not come with inherent features/exportables-support, to work with features.
 
 
 Examples
 --------
 
-- allow your features to store configuration of Drupal 6's
+- allow your features to store configuration of Drupal 6s
 
   {filters}          and
   {filter_formats}   along with
@@ -27,7 +27,7 @@ Examples
 
 - {blocks} etc. 
 
-- any other tables that _only_ stores moderate amounts of _configuration_
+- any other tables that _only_ store moderate amounts of configuration.
 
 
 Quirks
@@ -50,7 +50,7 @@ No questions, the best way to enable modules without inherent features support t
 - you don't have the time (a pity, but happens in real world)
 - there is simply no good elegant way to achieve that - or no way at all
 
-As we think, it's a site should be living cleanly in code, there should be no blank spots on this map, and it should not cost you hours or days to fix shortcomings of other modules or architectures. This is why we created this module.
+As we think, a site should be living cleanly in code. There should be no blank spots on this map, and it should not cost you hours or days to fix shortcomings of other modules or architectures. This is why we created this module.
 
 So, while features_tables is not the pure and proper way to go, it may be helpful in some cases.
 
