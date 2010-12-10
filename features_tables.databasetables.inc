@@ -6,7 +6,8 @@
  * @file
  * The databasetables component management file for features_tables.module
  *
- * Manages the export, reverting and rebuilding of database tables as features components
+ * Manages the export, reverting and rebuilding of database tables as features
+ * components
  */
 
 
@@ -63,7 +64,8 @@ function databasetables_features_export($data, &$export, $module_name) {
  * @return array
  *   An associative array of rendered PHP code where the key is the name of the
  *   hook that should wrap the PHP code. The hook should not include the name
- *   of the module, e.g. the key for `features_tables_example` should simply be `example`.
+ *   of the module, e.g. the key for `features_tables_example` should simply 
+ *   be `example`.
  */
 function databasetables_features_export_render($module_name, $data) {
 
@@ -131,7 +133,7 @@ function databasetables_features_rebuild($module_name) {
  * List all tables through schema api
  *
  * @return array
- *   An associative array with table-schema-arrays
+ *   An associative array with table-schema-arrays.
  */
 function databasetables_list_tables() {
   foreach (drupal_get_schema() as $tablename => $table) {
@@ -152,7 +154,8 @@ function databasetables_list_tables() {
  * @param string $table_name
  *   The name of the table to retrieve all row data from
  * @return array
- *   A keyed array with hierarchical 'schema' array and the numeric array of the table 'data' row objects
+ *   A keyed array with hierarchical 'schema' array and the numeric array of 
+ *   the table 'data' row objects.
  */
 function databasetables_export_table($table_name) {
   $schema = databasetables_reduce_tableschema(drupal_get_schema($table_name));
@@ -188,7 +191,8 @@ function databasetables_export_table($table_name) {
  * @param string $table_name
  *   The name of the table to import row data to
  * @param array &$table
- *   The structured array describing 'schema' and 'data' of the table (see databasetables_export_table)
+ *   The structured array describing 'schema' and 'data' of the table (see 
+ *   databasetables_export_table)
  * @param string $module_name
  *   The name of the feature module whose components should be rebuilt.
  */
@@ -264,7 +268,8 @@ function databasetables_import_table_row($table_name, $row, $module_name) {
 
 
 /*
- * Reduce a table schema definition and prepare it for comparison by removing irrelevant definitions
+ * Reduce a table schema definition and prepare it for comparison by removing
+ * irrelevant definitions
  *
  * @param array $table_schema
  *   The table schema definition as structured schema array
@@ -332,10 +337,12 @@ function features_tables_features_tables_export_postprocess($module_name, $table
 /*
  * Implementation of hook_features_tables_export_row_alter();
  *
- * Called to alter a record/row retrieved from the database right before it is exported to a feature.
+ * Called to alter a record/row retrieved from the database right before it is
+ * exported to a feature.
  *
  * @param array $row
- *   An array by reference with fieldname=>fieldvalue pairs which can be altered, unset or extended
+ *   An array by reference with fieldname=>fieldvalue pairs which can be 
+ *   altered, unset or extended.
  *   The table name is given in $row['!table']
  *
  */
@@ -348,7 +355,8 @@ function features_tables_features_tables_export_row_alter(&$row) {
 /*
  * Implementation of hook_features_tables_import_preprocess();
  *
- * Called just before importing serialized export data from a feature into the database
+ * Called just before importing serialized export data from a feature into the
+ * database.
  *
  * @param array $module_name
  *   The name of the feature module the export is generated for
@@ -364,7 +372,8 @@ function features_tables_features_tables_import_preprocess($module_name, $table_
 /*
  * Implementation of hook_features_tables_import_postprocess();
  *
- * Called right after importing serialized export data from a feature to the database
+ * Called right after importing serialized export data from a feature to the
+ * database.
  *
  * @param array $module_name
  *   The name of the feature module the export is generated for
@@ -385,10 +394,12 @@ function features_tables_features_tables_import_postprocess($module_name, $table
 /*
  * Implementation of hook_features_tables_import_row_alter();
  *
- * Called to alter a record/row retrieved from a feature just before it is imported into the databsase.
+ * Called to alter a record/row retrieved from a feature just before it is
+ * imported into the databsase.
  *
  * @param array $row
- *   An array by reference with fieldname=>fieldvalue pairs which can be altered, unset or extended
+ *   An array by reference with fieldname=>fieldvalue pairs which can be
+ *   altered, unset or extended.
  *   The table name is given in $row['!table']
  *
  */
@@ -396,5 +407,3 @@ function features_tables_features_tables_import_row_alter(&$row) {
   // don't import/export languages.javascript column
   if ($row['!table'] == 'languages') unset($row['javascript']);
 }
-
-
