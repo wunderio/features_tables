@@ -11,7 +11,6 @@ The features_tables module exposes entire database tables declared via the drupa
 This enables you to store and deploy _whole_ database _tables_ in code via features.
 This is meant to be used as a last means for modules, which store site buildling _configuration_ in dedicated tables but do not come with inherent features/exportables-support, to work with features.
 
-
 Examples
 --------
 
@@ -74,7 +73,7 @@ Features_tables is in use on D6 development and production sites, but as the (re
 Installation
 ------------        
 
-Just install and enable the module, and you will see your tables (those declared via schema-api) within Features as component/export options "Database tables", which you can select to include in the feature of your choice.
+Just install and enable the module, and you will see your tables (those declared via schema-api) within Features as component/export options "Database tables", which you can select to include in the feature of your choice. You'll need features.module to be able to install and use features_tables.module.
 
 
 API
